@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>gaewynn</Authors>
+    <Company>Sonata</Company>
+    <Description>Sonata.Diagnostics</Description>
+    <Copyright>Copyright @ 2018 Sonata</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Gaewynn/Sonata.Diagnostics</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/gaewynn/Sonata.Diagnostics/master/NuGet/sonata-diagnostics.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Gaewynn/Sonata.Diagnostics</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>gaewynn sonata diagnostics</PackageTags>
+    <NeutralLanguage>English (United States)</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Sonata.Core" Version="1.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.2" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Sonata.Diagnostics</id>
+    <version>$version$</version>
+    <title>Sonata.Diagnostics</title>
+    <authors>gaewynn</authors>
+    <owners>Sonata</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/Gaewynn/Sonata.Diagnostics</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/gaewynn/Sonata.Diagnostics/master/NuGet/sonata-diagnostics.png</iconUrl>
+    <description>Sonata.Diagnostics</description>
+    <summary></summary>
+    <copyright>Copyright @ 2018 Sonata</copyright>
+	<tags>gaewynn sonata diagnostics</tags>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Sonata.Core" version="1.0.1" />
+      <dependency id="log4net" version="2.0.8" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src=".\Sonata.Diagnostics\bin\$configuration$\netstandard2.0\Sonata.Diagnostics.dll" target="Sonata.Diagnostics.dll" />
+  </files>
+</package>
