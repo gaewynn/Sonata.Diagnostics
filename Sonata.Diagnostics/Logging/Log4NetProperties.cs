@@ -35,12 +35,12 @@ namespace Sonata.Diagnostics.Logging
 
 		#region Methods
 
-		public ILog4NetProperties Build(Level level, Type source, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(Level level, Type source, string message, string thread = null, Exception exception = null)
 		{
 			return Build(level, source, null, message, thread, exception);
 		}
 
-		public ILog4NetProperties Build(Level level, Type source, string code, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(Level level, Type source, string code, string message, string thread = null, Exception exception = null)
 		{
 			if (source == null)
 				throw new ArgumentNullException("source");
@@ -48,12 +48,12 @@ namespace Sonata.Diagnostics.Logging
 			return Build(level, source.FullName, code, message, thread, exception);
 		}
 
-		public ILog4NetProperties Build(Level level, string source, string message, string thread = null,  Exception exception = null)
+		public static ILog4NetProperties Build(Level level, string source, string message, string thread = null,  Exception exception = null)
 		{
 			return Build(level, source, null, message, thread, exception);
 		}
 
-		public ILog4NetProperties Build(Level level, string source, string code, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(Level level, string source, string code, string message, string thread = null, Exception exception = null)
 		{
 			return new Log4NetProperties
 			{
