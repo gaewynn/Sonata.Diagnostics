@@ -12,6 +12,8 @@ namespace Sonata.Diagnostics.Logging
 	{
 		#region Properties
 
+		string UserName { get; set; }
+
 		string Code { get; set; }
 
 		string Thread { get; set; }

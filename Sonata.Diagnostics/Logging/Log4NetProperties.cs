@@ -13,6 +13,9 @@ namespace Sonata.Diagnostics.Logging
 	{
 		#region Properties
 
+		[DataMember(Name = "userName")]
+		public string UserName { get; set; }
+
 		[DataMember(Name = "code")]
 		public string Code { get; set; }
 
@@ -35,28 +38,29 @@ namespace Sonata.Diagnostics.Logging
 
 		#region Methods
 
-		public static ILog4NetProperties Build(Level level, Type source, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(string userName, Level level, Type source, string message, string thread = null, Exception exception = null)
 		{
-			return Build(level, source, null, message, thread, exception);
+			return Build(userName, level, source, null, message, thread, exception);
 		}
 
-		public static ILog4NetProperties Build(Level level, Type source, string code, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(string userName, Level level, Type source, string code, string message, string thread = null, Exception exception = null)
 		{
 			if (source == null)
 				throw new ArgumentNullException("source");
 
-			return Build(level, source.FullName, code, message, thread, exception);
+			return Build(userName, level, source.FullName, code, message, thread, exception);
 		}
 
-		public static ILog4NetProperties Build(Level level, string source, string message, string thread = null,  Exception exception = null)
+		public static ILog4NetProperties Build(string userName, Level level, string source, string message, string thread = null,  Exception exception = null)
 		{
-			return Build(level, source, null, message, thread, exception);
+			return Build(userName, level, source, null, message, thread, exception);
 		}
 
-		public static ILog4NetProperties Build(Level level, string source, string code, string message, string thread = null, Exception exception = null)
+		public static ILog4NetProperties Build(string userName, Level level, string source, string code, string message, string thread = null, Exception exception = null)
 		{
 			return new Log4NetProperties
 			{
+				UserName = userName,
 				Code = code,
 				Thread = thread,
 				Level = level,
