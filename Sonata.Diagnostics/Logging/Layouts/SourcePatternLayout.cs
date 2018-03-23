@@ -1,12 +1,12 @@
-﻿#region Namespace Sonata.Diagnostics.Logs.Layouts
-//	TODO: comment
+﻿#region Namespace Sonata.Diagnostics.Logging.Layouts
+//	TODO
 #endregion
 
 using log4net.Layout;
 using log4net.Util;
-using Sonata.Diagnostics.Logs.Converters;
+using Sonata.Diagnostics.Logging.Converters;
 
-namespace Sonata.Diagnostics.Logs.Layouts
+namespace Sonata.Diagnostics.Logging.Layouts
 {
 	public class SourcePatternLayout : PatternLayout
 	{

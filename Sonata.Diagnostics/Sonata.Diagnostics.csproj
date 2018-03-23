@@ -13,15 +13,15 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>gaewynn sonata diagnostics</PackageTags>
     <NeutralLanguage>English (United States)</NeutralLanguage>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="Sonata.Core" Version="1.0.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.1" />
+    <PackageReference Include="Sonata.Core" Version="1.0.2" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.4.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.3" />
   </ItemGroup>
 
 </Project>

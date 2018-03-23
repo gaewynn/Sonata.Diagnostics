@@ -1,15 +1,19 @@
-﻿using System;
+﻿#region Namespace Sonata.Diagnostics.Logging.Appenders
+//	TODO
+#endregion
+
+using log4net.Appender;
+using log4net.Core;
+using log4net.Layout;
+using log4net.Util;
+using System;
 using System.Collections;
 using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Reflection;
-using log4net.Appender;
-using log4net.Core;
-using log4net.Layout;
-using log4net.Util;
 
-namespace Sonata.Diagnostics.Logs.Appenders
+namespace Sonata.Diagnostics.Logging.Appenders
 {
 	/// <summary>
 	/// Appender that logs to a database.

@@ -1,13 +1,13 @@
-﻿#region Namespace Sonata.Diagnostics.Logs.Converters
-//	TODO: comment
+﻿#region Namespace Sonata.Diagnostics.Logging.Converters
+//	TODO
 #endregion
 
-using System.IO;
 using log4net;
 using log4net.Core;
 using log4net.Layout.Pattern;
+using System.IO;
 
-namespace Sonata.Diagnostics.Logs.Converters
+namespace Sonata.Diagnostics.Logging.Converters
 {
 	public class SourcePatternConverter : PatternLayoutConverter
 	{
