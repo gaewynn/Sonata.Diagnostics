@@ -16,8 +16,10 @@ namespace Sonata.Diagnostics.Logging.Layouts
 
 		public SourcePatternLayout()
 		{
-			AddConverter(new ConverterInfo { Name = SourcePatternConverter.SourcePropertyName, Type = typeof(SourcePatternConverter) });
-			AddConverter(new ConverterInfo { Name = CodePatternConverter.CodePropertyName, Type = typeof(CodePatternConverter) });
+			AddConverter(new ConverterInfo { Name = Converters.PatternConverter.SourcePropertyName, Type = typeof(SourcePatternConverter) });
+			AddConverter(new ConverterInfo { Name = Converters.PatternConverter.CodePropertyName, Type = typeof(CodePatternConverter) });
+			AddConverter(new ConverterInfo { Name = Converters.PatternConverter.UserNamePropertyName, Type = typeof(UserNamePatternConverter) });
+			AddConverter(new ConverterInfo { Name = Converters.PatternConverter.ThreadNamePropertyName, Type = typeof(ThreadNamePatternConverter) });
 		}
 
 		#endregion

@@ -11,19 +11,13 @@ namespace Sonata.Diagnostics.Logging.Converters
 {
 	public class CodePatternConverter : PatternLayoutConverter
 	{
-		#region Constants
-
-		internal const string CodePropertyName = "code";
-
-		#endregion
-
 		#region Methods
 
 		#region PatternLayoutConverter Members
 
 		protected override void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
-			writer.Write(LogicalThreadContext.Properties[CodePropertyName]);
+			writer.Write(LogicalThreadContext.Properties[PatternConverter.CodePropertyName]);
 		}
 
 		#endregion

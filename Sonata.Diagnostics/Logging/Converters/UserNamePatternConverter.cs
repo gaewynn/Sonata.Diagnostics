@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Sonata.Diagnostics.Logging.Converters
 {
-	public class SourcePatternConverter : PatternLayoutConverter
+	public class UserNamePatternConverter : PatternLayoutConverter
 	{
 		#region Methods
 
@@ -17,7 +17,7 @@ namespace Sonata.Diagnostics.Logging.Converters
 
 		protected override void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
-			writer.Write(LogicalThreadContext.Properties[PatternConverter.SourcePropertyName]);
+			writer.Write(LogicalThreadContext.Properties[PatternConverter.UserNamePropertyName]);
 		}
 
 		#endregion

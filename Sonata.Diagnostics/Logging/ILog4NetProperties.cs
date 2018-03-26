@@ -2,9 +2,8 @@
 //	TODO
 #endregion
 
+using Microsoft.Extensions.Logging;
 using System;
-using System.Runtime.Serialization;
-using log4net.Core;
 
 namespace Sonata.Diagnostics.Logging
 {
@@ -18,7 +17,7 @@ namespace Sonata.Diagnostics.Logging
 
 		string Thread { get; set; }
 
-		Level Level { get; set; }
+		LogLevel Level { get; set; }
 
 		string Source { get; set; }
 

@@ -17,22 +17,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogTrace(this ILogger instance, Type source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogTrace(source, null, message, formatter);
+			instance.LogTrace(source, null, message, null, formatter);
 		}
 
-		public static void LogTrace(this ILogger instance, Type source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogTrace(this ILogger instance, Type source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogTrace(source.FullName, code, message, formatter);
+			instance.LogTrace(source, null, message, userName, formatter);
 		}
 
-		public static void LogTrace(this ILogger instance, string source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogTrace(this ILogger instance, Type source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogTrace(source, null, message, formatter);
+			instance.LogTrace(source.FullName, code, message, userName, formatter);
 		}
 
-		public static void LogTrace(this ILogger instance, string source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogTrace(this ILogger instance, string source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogTrace(BuildProperties(source, code, message), formatter);
+			instance.LogTrace(source, null, message, userName, formatter);
+		}
+
+		public static void LogTrace(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogTrace(BuildProperties(source, code, message, userName), formatter);
 		}
 
 		public static void LogTrace(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -47,22 +52,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogDebug(this ILogger instance, Type source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogDebug(source, null, message, formatter);
+			instance.LogDebug(source, null, message, null, formatter);
 		}
 
-		public static void LogDebug(this ILogger instance, Type source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogDebug(this ILogger instance, Type source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogDebug(source.FullName, code, message, formatter);
+			instance.LogDebug(source, null, message, userName, formatter);
 		}
 
-		public static void LogDebug(this ILogger instance, string source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogDebug(this ILogger instance, Type source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogDebug(source, null, message, formatter);
+			instance.LogDebug(source.FullName, code, message, userName, formatter);
 		}
 
-		public static void LogDebug(this ILogger instance, string source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogDebug(this ILogger instance, string source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogDebug(BuildProperties(source, code, message), formatter);
+			instance.LogDebug(source, null, message, userName, formatter);
+		}
+
+		public static void LogDebug(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogDebug(BuildProperties(source, code, message, userName), formatter);
 		}
 
 		public static void LogDebug(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -77,22 +87,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogInformation(this ILogger instance, Type source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogInformation(source, null, message, formatter);
+			instance.LogInformation(source, null, message, null, formatter);
 		}
 
-		public static void LogInformation(this ILogger instance, Type source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogInformation(this ILogger instance, Type source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogInformation(source.FullName, code, message, formatter);
+			instance.LogInformation(source, null, message, userName, formatter);
 		}
 
-		public static void LogInformation(this ILogger instance, string source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogInformation(this ILogger instance, Type source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogInformation(source, null, message, formatter);
+			instance.LogInformation(source.FullName, code, message, userName, formatter);
 		}
 
-		public static void LogInformation(this ILogger instance, string source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogInformation(this ILogger instance, string source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogInformation(BuildProperties(source, code, message), formatter);
+			instance.LogInformation(source, null, message, userName, formatter);
+		}
+
+		public static void LogInformation(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogInformation(BuildProperties(source, code, message, userName), formatter);
 		}
 
 		public static void LogInformation(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -107,22 +122,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogWarning(this ILogger instance, Type source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogWarning(source, null, message, formatter);
+			instance.LogWarning(source, null, message, null, formatter);
 		}
 
-		public static void LogWarning(this ILogger instance, Type source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogWarning(this ILogger instance, Type source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogWarning(source.FullName, code, message, formatter);
+			instance.LogWarning(source, null, message, userName, formatter);
 		}
 
-		public static void LogWarning(this ILogger instance, string source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogWarning(this ILogger instance, Type source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogWarning(source, null, message, formatter);
+			instance.LogWarning(source.FullName, code, message, userName, formatter);
 		}
 
-		public static void LogWarning(this ILogger instance, string source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogWarning(this ILogger instance, string source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogWarning(BuildProperties(source, code, message), formatter);
+			instance.LogWarning(source, null, message, userName, formatter);
+		}
+
+		public static void LogWarning(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogWarning(BuildProperties(source, code, message, userName), formatter);
 		}
 
 		public static void LogWarning(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -137,22 +157,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogError(this ILogger instance, Type source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogError(source, null, message, formatter);
+			instance.LogError(source, null, message, null, formatter);
 		}
 
-		public static void LogError(this ILogger instance, Type source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogError(this ILogger instance, Type source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogError(source.FullName, code, message, formatter);
+			instance.LogError(source, null, message, userName, formatter);
 		}
 
-		public static void LogError(this ILogger instance, string source, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogError(this ILogger instance, Type source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogError(source, null, message, formatter);
+			instance.LogError(source.FullName, code, message, userName, formatter);
 		}
 
-		public static void LogError(this ILogger instance, string source, string code, string message, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogError(this ILogger instance, string source, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogError(BuildProperties(source, code, message), formatter);
+			instance.LogError(source, null, message, userName, formatter);
+		}
+
+		public static void LogError(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogError(BuildProperties(source, code, message, userName), formatter);
 		}
 
 		public static void LogError(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -167,22 +192,27 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogCritical(this ILogger instance, Type source, string message, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(source, null, message, exception, formatter);
+			instance.LogCritical(source, null, message, exception, null, formatter);
 		}
 
-		public static void LogCritical(this ILogger instance, Type source, string code, string message, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogCritical(this ILogger instance, Type source, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(source.FullName, code, message, exception, formatter);
+			instance.LogCritical(source, null, message, exception, userName, formatter);
 		}
 
-		public static void LogCritical(this ILogger instance, string source, string message, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogCritical(this ILogger instance, Type source, string code, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(source, null, message, exception, formatter);
+			instance.LogCritical(source.FullName, code, message, userName, exception, formatter);
 		}
 
-		public static void LogCritical(this ILogger instance, string source, string code, string message, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
+		public static void LogCritical(this ILogger instance, string source, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(BuildProperties(source, code, message), exception, formatter);
+			instance.LogCritical(source, null, message, userName, exception, formatter);
+		}
+
+		public static void LogCritical(this ILogger instance, string source, string code, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
+		{
+			instance.LogCritical(BuildProperties(source, code, message, userName), exception, formatter);
 		}
 
 		public static void LogCritical(this ILogger instance, ILog4NetProperties state, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -195,13 +225,14 @@ namespace Sonata.Diagnostics.Extensions
 			instance.Log(LogLevel.Critical, new EventId(), state, exception, BuildFormatter(formatter));
 		}
 
-		private static ILog4NetProperties BuildProperties(string source, string code, string message)
+		private static ILog4NetProperties BuildProperties(string source, string code, string message, string userName)
 		{
 			return new Log4NetProperties
 			{
 				Source = source,
 				Code = code,
-				Message = message
+				Message = message,
+				UserName = userName
 			};
 		}
 

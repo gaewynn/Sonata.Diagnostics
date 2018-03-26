@@ -18,6 +18,8 @@ namespace Sonata.Diagnostics.Logging
 
 		public Func<object, ILog4NetProperties> PropertiesAccessor { get; set; }
 
+		public Func<object, string> UserNameAccessor { get; set; }
+
 		public Func<object, Exception, string> ExceptionFormatter { get; set; }
 
 		public string ConfigurationFileFullName { get; set; }
@@ -42,6 +44,7 @@ namespace Sonata.Diagnostics.Logging
 					Source = null,
 					Message = null
 				},
+				UserNameAccessor = state => null,
 				ExceptionFormatter = (state, exception) => $"{state.ToString()} - {exception.Message}",
 			};
 		}

@@ -119,13 +119,18 @@ namespace Sonata.Diagnostics.Logging
 			var log4NetProperties = state as ILog4NetProperties ?? _options.PropertiesAccessor(state);
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Code))
-				LogicalThreadContext.Properties[CodePatternConverter.CodePropertyName] = log4NetProperties.Code;
+				LogicalThreadContext.Properties[PatternConverter.CodePropertyName] = log4NetProperties.Code;
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Thread))
-				LogicalThreadContext.Properties["ThreadName"] = log4NetProperties.Source;
+				LogicalThreadContext.Properties[PatternConverter.ThreadNamePropertyName] = log4NetProperties.Source;
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Source))
-				LogicalThreadContext.Properties[SourcePatternConverter.SourcePropertyName] = log4NetProperties.Source;
+				LogicalThreadContext.Properties[PatternConverter.SourcePropertyName] = log4NetProperties.Source;
+
+			LogicalThreadContext.Properties[PatternConverter.UserNamePropertyName] =
+				!String.IsNullOrWhiteSpace(log4NetProperties.UserName)
+					? log4NetProperties.UserName
+					: _options.UserNameAccessor(state);
 
 			switch (logLevel)
 			{
