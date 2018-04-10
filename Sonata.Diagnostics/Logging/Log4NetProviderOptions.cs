@@ -22,7 +22,21 @@ namespace Sonata.Diagnostics.Logging
 
 		public Func<object, Exception, string> ExceptionFormatter { get; set; }
 
+		/// <summary>
+		/// Gets or sets the log4net configuration file fullname (must be in a XML format).
+		/// </summary>
+		/// <remarks>
+		/// If both <see cref="ConfigurationFileFullName"/> and <see cref="JsonConfiguration"/> are set, the <see cref="JsonConfiguration"/> will be used.
+		/// </remarks>
 		public string ConfigurationFileFullName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the log4net configuration in a JSON format.
+		/// </summary>
+		/// <remarks>
+		/// If both <see cref="ConfigurationFileFullName"/> and <see cref="JsonConfiguration"/> are set, the <see cref="JsonConfiguration"/> will be used.
+		/// </remarks>
+		public string JsonConfiguration { get; set; }
 
 		public Schema.log4net Log4NetConfiguration { get; internal set; }
 
@@ -38,6 +52,7 @@ namespace Sonata.Diagnostics.Logging
 			{
 				IncludeScopes = false,
 				ConfigurationFileFullName = "log4net.config",
+				JsonConfiguration = null,
 				PropertiesAccessor = state => new Log4NetProperties
 				{
 					Code = null,

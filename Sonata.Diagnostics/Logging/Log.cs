@@ -2,8 +2,10 @@
 //	TODO
 #endregion
 
+using System;
 using Microsoft.Extensions.Logging;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Sonata.Diagnostics.Logging
 {
@@ -24,6 +26,26 @@ namespace Sonata.Diagnostics.Logging
 		#endregion
 
 		#region Methods
+
+		#region Object Members
+
+		public override string ToString()
+		{
+			var sb = new StringBuilder();
+			if (!String.IsNullOrWhiteSpace(Code))
+			{
+				sb.Append(Code);
+				if (!String.IsNullOrWhiteSpace(Message))
+					sb.Append(" - ");
+			}
+
+			if (!String.IsNullOrWhiteSpace(Message))
+				sb.Append(Message);
+
+			return sb.ToString();
+		}
+
+		#endregion
 
 		public static Log BuildTrace(string message)
 		{

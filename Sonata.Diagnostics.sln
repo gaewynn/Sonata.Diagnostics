@@ -3,7 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonata.Diagnostics", "Sonata.Diagnostics\Sonata.Diagnostics.csproj", "{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonata.Diagnostics", "Sonata.Diagnostics\Sonata.Diagnostics.csproj", "{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{72AEC823-C9DF-461D-8832-CAB6D2C7A91B}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\Build.bat = NuGet\Build.bat
+		NuGet\sonata-diagnostics.png = NuGet\sonata-diagnostics.png
+		NuGet\Sonata.Diagnostics 2.0.5.nuspec = NuGet\Sonata.Diagnostics 2.0.5.nuspec
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonata.Diagnostics.Tests", "Sonata.Diagnostics.Tests\Sonata.Diagnostics.Tests.csproj", "{D661EFF8-9813-462D-9E4B-760C2FF34700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +24,10 @@ Global
 		{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D661EFF8-9813-462D-9E4B-760C2FF34700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D661EFF8-9813-462D-9E4B-760C2FF34700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D661EFF8-9813-462D-9E4B-760C2FF34700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D661EFF8-9813-462D-9E4B-760C2FF34700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
