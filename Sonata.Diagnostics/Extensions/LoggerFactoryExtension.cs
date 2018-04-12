@@ -72,7 +72,10 @@ namespace Sonata.Diagnostics.Extensions
 			var serializer = new XmlSerializer(typeof(Logging.Schema.log4net));
 			log4NetOptions.Log4NetConfiguration = serializer.Deserialize(log4NetElement.CreateReader()) as Logging.Schema.log4net;
 
-			XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetEntryAssembly()), log4NetElement.ToXmlElement());
+			if (log4NetOptions.Configure != null)
+				log4NetOptions.Configure(log4NetElement);
+			else
+				XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetEntryAssembly()), log4NetElement.ToXmlElement());
 		}
 
 		private static XElement ParseLog4NetConfigFile(string filename)

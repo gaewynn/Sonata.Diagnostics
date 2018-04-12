@@ -3,6 +3,7 @@
 #endregion
 
 using System;
+using System.Xml.Linq;
 
 namespace Sonata.Diagnostics.Logging
 {
@@ -21,6 +22,12 @@ namespace Sonata.Diagnostics.Logging
 		public Func<object, string> UserNameAccessor { get; set; }
 
 		public Func<object, Exception, string> ExceptionFormatter { get; set; }
+
+		/// <summary>
+		/// Gets or sets an <see cref="Action"/> allowing to configure log4net manually.
+		/// The action provides a <see cref="XElement"/> containing the provided log4net configuration.
+		/// </summary>
+		public Action<XElement> Configure { get; set; }
 
 		/// <summary>
 		/// Gets or sets the log4net configuration file fullname (must be in a XML format).
@@ -60,6 +67,7 @@ namespace Sonata.Diagnostics.Logging
 					Message = null
 				},
 				UserNameAccessor = state => null,
+				Configure = null,
 				ExceptionFormatter = (state, exception) => $"{state.ToString()} - {exception.Message}",
 			};
 		}
