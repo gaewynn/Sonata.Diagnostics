@@ -75,7 +75,7 @@ namespace Sonata.Diagnostics.Extensions
 			if (log4NetOptions.Configure != null)
 				log4NetOptions.Configure(log4NetElement);
 			else
-				XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetEntryAssembly()), log4NetElement.ToXmlElement());
+				XmlConfigurator.Configure(LogManager.GetRepository(log4NetOptions.RepositoryAssembly ?? Assembly.GetEntryAssembly()), log4NetElement.ToXmlElement());
 		}
 
 		private static XElement ParseLog4NetConfigFile(string filename)

@@ -49,7 +49,7 @@ namespace Sonata.Diagnostics.Logging
 		/// <param name="options"></param>
 		public Log4NetLoggerProvider(Log4NetProviderOptions options)
 		{
-			_loggerRepository = LogManager.CreateRepository(Assembly.GetEntryAssembly(),
+			_loggerRepository = LogManager.CreateRepository(options.RepositoryAssembly ?? Assembly.GetEntryAssembly(),
 				typeof(log4net.Repository.Hierarchy.Hierarchy));
 
 			Options = MergeOptions(options ?? Log4NetProviderOptions.Default);

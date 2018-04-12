@@ -3,6 +3,7 @@
 #endregion
 
 using System;
+using System.Reflection;
 using System.Xml.Linq;
 
 namespace Sonata.Diagnostics.Logging
@@ -16,6 +17,8 @@ namespace Sonata.Diagnostics.Logging
 		#endregion
 
 		#region Properties
+
+		public Assembly RepositoryAssembly { get; set; }
 
 		public Func<object, ILog4NetProperties> PropertiesAccessor { get; set; }
 
@@ -57,6 +60,7 @@ namespace Sonata.Diagnostics.Logging
 		{
 			Default = new Log4NetProviderOptions
 			{
+				RepositoryAssembly = null,
 				IncludeScopes = false,
 				ConfigurationFileFullName = "log4net.config",
 				JsonConfiguration = null,
