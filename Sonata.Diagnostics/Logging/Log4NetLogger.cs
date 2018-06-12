@@ -5,6 +5,7 @@
 using log4net;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
+using Newtonsoft.Json;
 using Sonata.Diagnostics.Extensions;
 using Sonata.Diagnostics.Logging.Converters;
 using System;
@@ -92,14 +93,8 @@ namespace Sonata.Diagnostics.Logging
 			if (!IsEnabled(logLevel))
 				return;
 
-			var message = state.ToString();
-			if (formatter != null)
-				message = formatter(state, exception);
-
-			if (exception != null && _exceptionFormatter != null)
-				message = _exceptionFormatter(message, exception);
-
-			if (String.IsNullOrEmpty(message) && exception == null)
+			var log4NetProperties = FromState(state.ToString()) ?? _options.PropertiesAccessor(state);
+			if (log4NetProperties == null || (String.IsNullOrEmpty(log4NetProperties.Message) && exception == null))
 				return;
 
 			var logBuilder = _logBuilder;
@@ -110,19 +105,17 @@ namespace Sonata.Diagnostics.Logging
 
 			GetScopeInformation(logBuilder);
 
-			if (!String.IsNullOrEmpty(message))
+			if (!String.IsNullOrEmpty(log4NetProperties.Message))
 			{
 				logBuilder.Append(MessagePadding);
-				logBuilder.Append(message);
+				logBuilder.Append(log4NetProperties.Message);
 			}
-
-			var log4NetProperties = state as ILog4NetProperties ?? _options.PropertiesAccessor(state);
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Code))
 				LogicalThreadContext.Properties[PatternConverter.CodePropertyName] = log4NetProperties.Code;
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Thread))
-				LogicalThreadContext.Properties[PatternConverter.ThreadNamePropertyName] = log4NetProperties.Source;
+				LogicalThreadContext.Properties[PatternConverter.ThreadNamePropertyName] = log4NetProperties.Thread;
 
 			if (!String.IsNullOrWhiteSpace(log4NetProperties.Source))
 				LogicalThreadContext.Properties[PatternConverter.SourcePropertyName] = log4NetProperties.Source;
@@ -175,6 +168,18 @@ namespace Sonata.Diagnostics.Logging
 
 			stringBuilder.Insert(initialLength, MessagePadding);
 			stringBuilder.AppendLine();
+		}
+
+		private ILog4NetProperties FromState(string state)
+		{
+			try
+			{
+				return JsonConvert.DeserializeObject<Log4NetProperties>(state);
+			}
+			catch (Exception)
+			{
+				return null;
+			}
 		}
 
 		#endregion

@@ -37,7 +37,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogTrace(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogTrace(BuildProperties(source, code, message, userName), formatter);
+			instance.LogTrace(Log4NetProperties.Build(userName, LogLevel.Trace, source, code, message, null, null).ToString());
 		}
 
 		public static void LogTrace(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -72,7 +72,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogDebug(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogDebug(BuildProperties(source, code, message, userName), formatter);
+			instance.LogDebug(Log4NetProperties.Build(userName, LogLevel.Debug, source, code, message, null, null).ToString());
 		}
 
 		public static void LogDebug(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -107,7 +107,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogInformation(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogInformation(BuildProperties(source, code, message, userName), formatter);
+			instance.LogInformation(Log4NetProperties.Build(userName, LogLevel.Information, source, code, message, null, null).ToString());
 		}
 
 		public static void LogInformation(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -142,7 +142,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogWarning(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogWarning(BuildProperties(source, code, message, userName), formatter);
+			instance.LogWarning(Log4NetProperties.Build(userName, LogLevel.Warning, source, code, message, null, null).ToString());
 		}
 
 		public static void LogWarning(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -177,7 +177,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogError(this ILogger instance, string source, string code, string message, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogError(BuildProperties(source, code, message, userName), formatter);
+			instance.LogError(Log4NetProperties.Build(userName, LogLevel.Error, source, code, message, null, null).ToString());
 		}
 
 		public static void LogError(this ILogger instance, ILog4NetProperties state, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -202,7 +202,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogCritical(this ILogger instance, Type source, string code, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(source.FullName, code, message, userName, exception, formatter);
+			instance.LogCritical(exception, Log4NetProperties.Build(userName, LogLevel.Critical, source, code, message, null, exception).ToString());
 		}
 
 		public static void LogCritical(this ILogger instance, string source, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -212,7 +212,7 @@ namespace Sonata.Diagnostics.Extensions
 
 		public static void LogCritical(this ILogger instance, string source, string code, string message, Exception exception, string userName, Func<ILog4NetProperties, Exception, string> formatter = null)
 		{
-			instance.LogCritical(BuildProperties(source, code, message, userName), exception, formatter);
+			instance.LogCritical(exception, Log4NetProperties.Build(userName, LogLevel.Critical, source, code, message, null, exception).ToString());
 		}
 
 		public static void LogCritical(this ILogger instance, ILog4NetProperties state, Exception exception, Func<ILog4NetProperties, Exception, string> formatter = null)
@@ -223,17 +223,6 @@ namespace Sonata.Diagnostics.Extensions
 		public static void LogCritical<T>(this ILogger instance, T state, Exception exception, Func<T, Exception, string> formatter = null)
 		{
 			instance.Log(LogLevel.Critical, new EventId(), state, exception, BuildFormatter(formatter));
-		}
-
-		private static ILog4NetProperties BuildProperties(string source, string code, string message, string userName)
-		{
-			return new Log4NetProperties
-			{
-				Source = source,
-				Code = code,
-				Message = message,
-				UserName = userName
-			};
 		}
 
 		private static Func<T, Exception, string> BuildFormatter<T>(Func<T, Exception, string> formatter)

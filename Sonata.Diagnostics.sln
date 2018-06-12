@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{72AEC823
 	ProjectSection(SolutionItems) = preProject
 		NuGet\Build.bat = NuGet\Build.bat
 		NuGet\sonata-diagnostics.png = NuGet\sonata-diagnostics.png
-		NuGet\Sonata.Diagnostics 2.0.7.nuspec = NuGet\Sonata.Diagnostics 2.0.7.nuspec
+		NuGet\Sonata.Diagnostics 2.1.0.nuspec = NuGet\Sonata.Diagnostics 2.1.0.nuspec
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonata.Diagnostics.Tests", "Sonata.Diagnostics.Tests\Sonata.Diagnostics.Tests.csproj", "{D661EFF8-9813-462D-9E4B-760C2FF34700}"
