@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonata.Diagnostics", "Sonata.Diagnostics\Sonata.Diagnostics.csproj", "{ACFBF951-EAB3-4B78-88D7-E78477C6E2F1}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{72AEC823
 	ProjectSection(SolutionItems) = preProject
 		NuGet\Build.bat = NuGet\Build.bat
 		NuGet\sonata-diagnostics.png = NuGet\sonata-diagnostics.png
-		NuGet\Sonata.Diagnostics 2.1.0.nuspec = NuGet\Sonata.Diagnostics 2.1.0.nuspec
+		NuGet\Sonata.Diagnostics 2.2.0.nuspec = NuGet\Sonata.Diagnostics 2.2.0.nuspec
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonata.Diagnostics.Tests", "Sonata.Diagnostics.Tests\Sonata.Diagnostics.Tests.csproj", "{D661EFF8-9813-462D-9E4B-760C2FF34700}"

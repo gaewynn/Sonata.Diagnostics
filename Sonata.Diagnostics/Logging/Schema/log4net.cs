@@ -2625,7 +2625,11 @@ namespace Sonata.Diagnostics.Logging.Schema
 		/// <remarks/>
 		[XmlEnum("log4net.Appender.UdpAppender")]
 		log4netAppenderUdpAppender,
-	}
+
+        /// <remarks/>
+		[XmlEnum("Sonata.Diagnostics.Logging.Appenders.AdoNetAppender, Sonata.Diagnostics")]
+        SonataDiagnosticsLoggingAppendersAdoNetAppender
+    }
 
 	/// <remarks/>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2558.0")]

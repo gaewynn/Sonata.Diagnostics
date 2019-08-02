@@ -14,9 +14,7 @@ using System.Threading.Tasks;
 
 namespace Sonata.Diagnostics.Logs
 {
-	[DataContract(Name = "log")]
-	//[KnownType(typeof(TechnicalLog))]
-	//[KnownType(typeof(BusinessLog))]
+    [DataContract(Name = "log")]
 	public class Log : ILogger
 	{
 		#region Members

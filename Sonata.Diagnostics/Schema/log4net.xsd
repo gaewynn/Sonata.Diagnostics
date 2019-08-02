@@ -691,6 +691,7 @@ Legal:
 			<xs:enumeration value="log4net.Appender.TextWriterAppender" />
 			<xs:enumeration value="log4net.Appender.TraceAppender" />
 			<xs:enumeration value="log4net.Appender.UdpAppender" />
+      <xs:enumeration value="Sonata.Diagnostics.Logging.Appenders.AdoNetAppender, Sonata.Diagnostics" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="log4netUpdateAttribute">

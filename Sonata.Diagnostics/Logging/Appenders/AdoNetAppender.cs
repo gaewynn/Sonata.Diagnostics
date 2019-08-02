@@ -6,6 +6,7 @@ using log4net.Appender;
 using log4net.Core;
 using log4net.Layout;
 using log4net.Util;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections;
 using System.Configuration;
@@ -140,29 +141,37 @@ namespace Sonata.Diagnostics.Logging.Appenders
 		/// </remarks>
 		public string ConnectionStringName { get; set; }
 
-		/// <summary>
-		/// Gets or sets the database connection string that is used to connect to 
-		/// the database.
-		/// </summary>
-		/// <value>
-		/// The database connection string used to connect to the database.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The connections string is specific to the connection type.
-		/// See <see cref="ConnectionType"/> for more information.
-		/// </para>
-		/// </remarks>
-		/// <example>Connection string for MS Access via ODBC:
-		/// <code>"DSN=MS Access Database;UID=admin;PWD=;SystemDB=C:\data\System.mdw;SafeTransactions = 0;FIL=MS Access;DriverID = 25;DBQ=C:\data\train33.mdb"</code>
-		/// </example>
-		/// <example>Another connection string for MS Access via ODBC:
-		/// <code>"Driver={Microsoft Access Driver (*.mdb)};DBQ=C:\Work\cvs_root\log4net-1.2\access.mdb;UID=;PWD=;"</code>
-		/// </example>
-		/// <example>Connection string for MS Access via OLE DB:
-		/// <code>"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Work\cvs_root\log4net-1.2\access.mdb;User Id=;Password=;"</code>
-		/// </example>
-		public string ConnectionString { get; set; }
+        /// <summary>
+        /// The connectionStrings key from App.Config that contains the connection string.
+        /// </summary>
+        /// <remarks>
+        /// This property requires at least .NET 2.0.
+        /// </remarks>
+        public string ConnectionStringFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database connection string that is used to connect to 
+        /// the database.
+        /// </summary>
+        /// <value>
+        /// The database connection string used to connect to the database.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The connections string is specific to the connection type.
+        /// See <see cref="ConnectionType"/> for more information.
+        /// </para>
+        /// </remarks>
+        /// <example>Connection string for MS Access via ODBC:
+        /// <code>"DSN=MS Access Database;UID=admin;PWD=;SystemDB=C:\data\System.mdw;SafeTransactions = 0;FIL=MS Access;DriverID = 25;DBQ=C:\data\train33.mdb"</code>
+        /// </example>
+        /// <example>Another connection string for MS Access via ODBC:
+        /// <code>"Driver={Microsoft Access Driver (*.mdb)};DBQ=C:\Work\cvs_root\log4net-1.2\access.mdb;UID=;PWD=;"</code>
+        /// </example>
+        /// <example>Connection string for MS Access via OLE DB:
+        /// <code>"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Work\cvs_root\log4net-1.2\access.mdb;User Id=;Password=;"</code>
+        /// </example>
+        public string ConnectionString { get; set; }
 
 		/// <summary>
 		/// The appSettings key from App.Config that contains the connection string.
@@ -616,10 +625,34 @@ namespace Sonata.Diagnostics.Logging.Appenders
 					return settings.ConnectionString;
 				}
 
-				throw new LogException("Unable to find [" + ConnectionStringName + "] ConfigurationManager.ConnectionStrings item");
+				//throw new LogException("Unable to find [" + ConnectionStringName + "] ConfigurationManager.ConnectionStrings item");
 			}
 
-			if (!String.IsNullOrEmpty(AppSettingsKey))
+            if (!string.IsNullOrWhiteSpace(ConnectionStringFile))
+            {
+                var configFile = new FileInfo(ConnectionStringFile);
+                if (configFile.Exists)
+                {
+                    var configurationBuilder = new ConfigurationBuilder();
+                    if (configFile.Extension.ToLowerInvariant() == ".json")
+                    {
+                        configurationBuilder.AddJsonFile(configFile.FullName, false);
+                    }
+                    else
+                    {
+                        throw new LogException($"Unsupported configuration format \"{configFile.Extension}\"");
+                    }
+
+                    var configuration = configurationBuilder.Build();
+                    connectionStringContext = $"ConnectionStringFile: {configFile.FullName}";
+
+                    return configuration.GetConnectionString(ConnectionStringName);
+                }
+
+                throw new LogException($"Unable to find [{ConnectionStringFile}] at \"{configFile.FullName}\"");
+            }
+
+            if (!String.IsNullOrEmpty(AppSettingsKey))
 			{
 				connectionStringContext = "AppSettingsKey";
 				var appSettingsConnectionString = SystemInfo.GetAppSetting(AppSettingsKey);

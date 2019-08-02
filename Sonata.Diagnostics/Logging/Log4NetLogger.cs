@@ -107,7 +107,7 @@ namespace Sonata.Diagnostics.Logging
 
 			if (!String.IsNullOrEmpty(log4NetProperties.Message))
 			{
-				logBuilder.Append(MessagePadding);
+				//logBuilder.Append(MessagePadding);
 				logBuilder.Append(log4NetProperties.Message);
 			}
 
